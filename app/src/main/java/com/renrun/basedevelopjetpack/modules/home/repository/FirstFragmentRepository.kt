@@ -1,4 +1,4 @@
-package com.renrun.basedevelopjetpack.ui.home.repository
+package com.renrun.basedevelopjetpack.modules.home.repository
 
 import com.renrun.basedevelopjetpack.data.HomePageInfo
 import com.renrun.basedevelopjetpack.ext.dispatchDefault

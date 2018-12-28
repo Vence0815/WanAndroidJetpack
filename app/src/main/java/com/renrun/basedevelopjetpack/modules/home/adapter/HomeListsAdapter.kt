@@ -1,4 +1,4 @@
-package com.renrun.basedevelopjetpack.adapter.recycleadapter
+package com.renrun.basedevelopjetpack.modules.home.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -8,18 +8,18 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.renrun.basedevelopjetpack.BR
 import com.renrun.basedevelopjetpack.R
-import com.renrun.basedevelopjetpack.data.HomePageInfo
+import com.renrun.basedevelopjetpack.data.Article
 
 /**
  * Created by vence on 2018/12/26 15:49
  * 邮箱 ：vence0815@foxmail.com
  */
-class HomeListAdapter(layoutResId: Int, data: List<HomePageInfo.RecordsEntity>) :
-    BaseQuickAdapter<HomePageInfo.RecordsEntity, HomeListAdapter.HomeViewHolder>(layoutResId, data) {
+class HomeListsAdapter(layoutResId: Int, data: List<Article>) :
+    BaseQuickAdapter<Article, HomeListsAdapter.HomeViewHolder>(layoutResId, data) {
 
-    override fun convert(helper: HomeViewHolder?, item: HomePageInfo.RecordsEntity?) {
+    override fun convert(helper: HomeViewHolder?, item: Article?) {
         val binding = helper?.binding
-        binding?.setVariable(BR.homeData, item)
+        binding?.setVariable(BR.articleData, item)
         binding?.executePendingBindings()
     }
 

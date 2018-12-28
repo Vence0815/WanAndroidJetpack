@@ -1,7 +1,9 @@
 package com.renrun.basedevelopjetpack.utils
 
-import com.renrun.basedevelopjetpack.ui.home.repository.FirstFragmentRepository
-import com.renrun.basedevelopjetpack.ui.home.viewmodel.FirstFragmentViewModeFactory
+import com.renrun.basedevelopjetpack.modules.home.repository.FirstFragmentRepository
+import com.renrun.basedevelopjetpack.modules.home.repository.HomeFragmentRepository
+import com.renrun.basedevelopjetpack.modules.home.viewmodel.FirstFragmentViewModeFactory
+import com.renrun.basedevelopjetpack.modules.home.viewmodel.HomeFragmentViewModeFactory
 
 /**
  * Created by vence on 2018/12/26 11:28
@@ -16,4 +18,11 @@ object InjectUtils {
      */
     fun provideFirstFragmentViewModelFactory(): FirstFragmentViewModeFactory =
         FirstFragmentViewModeFactory(FirstFragmentRepository.getInstance())
+
+
+    /**
+     * 首页ViewModel
+     */
+    fun provideHomeFragmentViewModelFactory(): HomeFragmentViewModeFactory =
+        HomeFragmentViewModeFactory(HomeFragmentRepository.getInstance())
 }

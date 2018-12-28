@@ -1,4 +1,4 @@
-package com.renrun.basedevelopjetpack.ui.home.Fragment
+package com.renrun.basedevelopjetpack.modules.home.Fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -13,7 +13,7 @@ import com.renrun.basedevelopjetpack.common.LoadingState
 import com.renrun.basedevelopjetpack.data.HomePageInfo
 import com.renrun.basedevelopjetpack.databinding.FragmentFirstBinding
 import com.renrun.basedevelopjetpack.ext.*
-import com.renrun.basedevelopjetpack.ui.home.viewmodel.FirstFragmentViewModel
+import com.renrun.basedevelopjetpack.modules.home.viewmodel.FirstFragmentViewModel
 import com.renrun.basedevelopjetpack.utils.InjectUtils
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import kotlinx.android.synthetic.main.fragment_first.*

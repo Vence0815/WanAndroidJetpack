@@ -8,9 +8,8 @@ import java.io.File
  * 邮箱 ：vence0815@foxmail.com
  *一些常用的字符串
  */
-const val NAMESPACE = "http://zuyiji.cn/api/"
+const val NAMESPACE = "http://www.wanandroid.com/"
 
-const val PREURL = "http://zuyiji.cn/"
 
 val PATH_DATA = MyApplication.getInstance().getCacheDir().getAbsolutePath() + File.separator + "reFreshData"
 

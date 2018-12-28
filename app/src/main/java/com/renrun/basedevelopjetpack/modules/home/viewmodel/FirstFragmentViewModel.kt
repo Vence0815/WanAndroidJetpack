@@ -1,4 +1,4 @@
-package com.renrun.basedevelopjetpack.ui.home.viewmodel
+package com.renrun.basedevelopjetpack.modules.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.renrun.basedevelopjetpack.base.BaseViewModel
@@ -6,7 +6,7 @@ import com.renrun.basedevelopjetpack.common.CommonLoadingState
 import com.renrun.basedevelopjetpack.common.FreshStatus
 import com.renrun.basedevelopjetpack.common.LoadingState
 import com.renrun.basedevelopjetpack.data.HomePageInfo
-import com.renrun.basedevelopjetpack.ui.home.repository.FirstFragmentRepository
+import com.renrun.basedevelopjetpack.modules.home.repository.FirstFragmentRepository
 import io.reactivex.rxkotlin.subscribeBy
 
 /**

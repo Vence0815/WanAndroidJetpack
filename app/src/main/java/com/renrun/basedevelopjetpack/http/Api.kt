@@ -1,9 +1,13 @@
 package com.renrun.basedevelopjetpack.http
 
+import com.renrun.basedevelopjetpack.data.ArticleResponseBody
+import com.renrun.basedevelopjetpack.data.Banner
 import com.renrun.basedevelopjetpack.data.HomePageInfo
+import com.renrun.basedevelopjetpack.data.HttpResult
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.QueryMap
 
 /**
@@ -20,4 +24,21 @@ interface Api {
         @Header("Authorization") sessiond: String,
         @QueryMap map: Map<String, String>
     ): Observable<HomePageInfo>
+
+
+    /**
+     * 获取轮播图
+     * http://www.wanandroid.com/banner/json
+     */
+    @GET("banner/json")
+    fun getBanners(): Observable<HttpResult<List<Banner>>>
+
+    /**
+     * 获取首页文章列表
+     * http://www.wanandroid.com/article/list/0/json
+     * @param pageNum
+     */
+    @GET("article/list/{pageNum}/json")
+    fun getArticles(@Path("pageNum") pageNum: Int): Observable<HttpResult<ArticleResponseBody>>
+
 }

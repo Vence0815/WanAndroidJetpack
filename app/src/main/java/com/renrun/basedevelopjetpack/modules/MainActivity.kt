@@ -1,4 +1,4 @@
-package com.renrun.basedevelopjetpack.ui
+package com.renrun.basedevelopjetpack.modules
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

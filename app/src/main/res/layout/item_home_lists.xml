@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+                name="articleData"
+                type="com.renrun.basedevelopjetpack.data.Article"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_margin="4dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="1dp"
+            app:cardElevation="1dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp">
+
+            <TextView
+                    android:id="@+id/tv_tag"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="标签 "/>
+
+            <TextView
+                    android:text="@{articleData.author}"
+                    android:id="@+id/tv_author"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/tv_tag"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="标签 "/>
+
+            <TextView
+                    android:text="@{articleData.niceDate}"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="4dp"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="日期 "/>
+
+
+            <TextView
+                    android:text="@{articleData.title}"
+                    android:id="@+id/tv_title"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/text_label_black"
+                    android:layout_below="@+id/tv_author"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="日期 "/>
+
+            <TextView
+                    android:text="@{articleData.superChapterName}"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/tv_title"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="分类 "/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
+
