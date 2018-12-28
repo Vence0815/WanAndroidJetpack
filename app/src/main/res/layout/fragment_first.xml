@@ -7,7 +7,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.renrun.basedevelopjetpack.viewmodel.FirstFragmentViewModel"/>
+                type="com.renrun.basedevelopjetpack.ui.home.viewmodel.FirstFragmentViewModel"/>
     </data>
 
     <LinearLayout

@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="activity"
-                type="com.renrun.basedevelopjetpack.app.MainActivity"/>
+                type="com.renrun.basedevelopjetpack.ui.MainActivity"/>
     </data>
 
     <LinearLayout
@@ -24,6 +24,8 @@
                 android:id="@+id/bottomnavigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:itemIconTint="@drawable/nav_item_color_state"
+                app:itemTextColor="@drawable/nav_item_color_state"
                 android:background="?android:attr/windowBackground"
                 app:menu="@menu/navigation"/>
 

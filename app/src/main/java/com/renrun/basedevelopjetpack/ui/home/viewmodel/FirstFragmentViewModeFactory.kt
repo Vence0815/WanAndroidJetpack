@@ -1,7 +1,8 @@
-package com.renrun.basedevelopjetpack.viewmodel
+package com.renrun.basedevelopjetpack.ui.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.renrun.basedevelopjetpack.ui.home.repository.FirstFragmentRepository
 
 /**
  * Created by vence on 2018/12/26 11:10
@@ -13,6 +14,8 @@ class FirstFragmentViewModeFactory(
 ) :ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T = FirstFragmentViewModel(repository) as T
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T = FirstFragmentViewModel(
+        repository
+    ) as T
 
 }

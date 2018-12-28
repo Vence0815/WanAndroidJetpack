@@ -1,4 +1,4 @@
-package com.renrun.basedevelopjetpack.base
+package com.renrun.basedevelopjetpack.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.viewpager.widget.ViewPager
 import com.renrun.basedevelopjetpack.R
 import com.renrun.basedevelopjetpack.databinding.FragmentMainBinding
 import com.renrun.basedevelopjetpack.ext.logSimpleI
-import com.renrun.basedevelopjetpack.fragment.FirstFragment
+import com.renrun.basedevelopjetpack.ui.home.Fragment.FirstFragment
 import com.renrun.basedevelopjetpack.fragment.SecondFragment
 import com.renrun.basedevelopjetpack.fragment.ThirdFragment
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -35,6 +35,8 @@ class MainFragment : Fragment() {
         fragments = listOf(
             FirstFragment(),
             SecondFragment(),
+            ThirdFragment(),
+            ThirdFragment(),
             ThirdFragment()
         )
         binding.mainViewPage.adapter =
@@ -62,9 +64,11 @@ class MainFragment : Fragment() {
 
         binding.bottomnavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_home -> mainViewPage.setCurrentItem(0,false)
-                R.id.navigation_dashboard -> mainViewPage.setCurrentItem(1,false)
-                R.id.navigation_notifications -> mainViewPage.setCurrentItem(2,false)
+                R.id.action_home -> mainViewPage.setCurrentItem(0,false)
+                R.id.action_knowledge_system -> mainViewPage.setCurrentItem(1,false)
+                R.id.action_wechat -> mainViewPage.setCurrentItem(2,false)
+                R.id.action_navigation -> mainViewPage.setCurrentItem(3,false)
+                R.id.action_project -> mainViewPage.setCurrentItem(4,false)
             }
             false
         }

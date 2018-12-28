@@ -1,8 +1,7 @@
-package com.renrun.basedevelopjetpack.fragment
+package com.renrun.basedevelopjetpack.ui.home.Fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.renrun.basedevelopjetpack.BR
@@ -14,8 +13,8 @@ import com.renrun.basedevelopjetpack.common.LoadingState
 import com.renrun.basedevelopjetpack.data.HomePageInfo
 import com.renrun.basedevelopjetpack.databinding.FragmentFirstBinding
 import com.renrun.basedevelopjetpack.ext.*
-import com.renrun.basedevelopjetpack.viewmodel.FirstFragmentViewModel
-import com.renrun.basedevelopjetpack.viewmodel.InjectUtils
+import com.renrun.basedevelopjetpack.ui.home.viewmodel.FirstFragmentViewModel
+import com.renrun.basedevelopjetpack.utils.InjectUtils
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import kotlinx.android.synthetic.main.fragment_first.*
 
@@ -68,7 +67,7 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>() {
         viewModel.loadingLayout.observe(viewLifecycleOwner, Observer {
             logE("我收到状态变化啦！！！！！！---" + it.loadingState + "--" + it.freshStatus + "-----" + it.errorMsg)
             when (it.loadingState) {
-                LoadingState.ERROR -> showToast(it.errorMsg)
+                LoadingState.ERROR -> toastErrorWithicon(it.errorMsg)
                 LoadingState.EMPTY -> {
                     if (it.freshStatus == FreshStatus.REFRESH) {
                         refreshView.setNoMoreData(false)
@@ -78,7 +77,7 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>() {
                     }
                 }
                 LoadingState.LOADING -> logW("正在加载")
-                LoadingState.NETERROR -> showToast(it.errorMsg)
+                LoadingState.NETERROR -> toastErrorWithicon(it.errorMsg)
                 LoadingState.SUCCESS -> finishFresh(refreshView)
             }
         })

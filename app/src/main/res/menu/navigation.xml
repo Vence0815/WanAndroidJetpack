@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<item-->
+    <!--android:id="@+id/navigation_home"-->
+    <!--android:icon="@drawable/ic_home_black_24dp"-->
+    <!--android:title="@string/title_home"/>-->
+
+    <!--<item-->
+    <!--android:id="@+id/navigation_dashboard"-->
+    <!--android:icon="@drawable/ic_dashboard_black_24dp"-->
+    <!--android:title="@string/title_dashboard"/>-->
+
+    <!--<item-->
+    <!--android:id="@+id/navigation_notifications"-->
+    <!--android:icon="@drawable/ic_notifications_black_24dp"-->
+    <!--android:title="@string/title_notifications"/>-->
 
     <item
-            android:id="@+id/navigation_home"
+            android:id="@+id/action_home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/title_home"/>
-
+            android:title="@string/home"
+            />
     <item
-            android:id="@+id/navigation_dashboard"
-            android:icon="@drawable/ic_dashboard_black_24dp"
-            android:title="@string/title_dashboard"/>
-
+            android:id="@+id/action_knowledge_system"
+            android:icon="@drawable/ic_apps_black_24dp"
+            android:title="@string/knowledge_system"
+            />
     <item
-            android:id="@+id/navigation_notifications"
-            android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="@string/title_notifications"/>
+            android:id="@+id/action_wechat"
+            android:icon="@drawable/ic_wechat_black_24dp"
+            android:title="@string/wechat"
+           />
+    <item
+            android:id="@+id/action_navigation"
+            android:icon="@drawable/ic_navigation_black_24dp"
+            android:title="@string/navigation"
+            />
+    <item
+            android:id="@+id/action_project"
+            android:icon="@drawable/ic_project_black_24dp"
+            android:title="@string/project"
+           />
+
 
 </menu>

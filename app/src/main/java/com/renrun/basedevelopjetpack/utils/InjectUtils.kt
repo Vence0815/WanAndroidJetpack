@@ -1,4 +1,7 @@
-package com.renrun.basedevelopjetpack.viewmodel
+package com.renrun.basedevelopjetpack.utils
+
+import com.renrun.basedevelopjetpack.ui.home.repository.FirstFragmentRepository
+import com.renrun.basedevelopjetpack.ui.home.viewmodel.FirstFragmentViewModeFactory
 
 /**
  * Created by vence on 2018/12/26 11:28

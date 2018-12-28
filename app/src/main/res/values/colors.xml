@@ -9,4 +9,7 @@
     <color name="text_label_gray10">#999999</color>
     <color name="line_color">#EEEEEE</color>
     <color name="text_label_red">#e60012</color>
+
+    <color name="Blue_Grey">#607d8b</color>
+    <color name="textColorPrimary">#616161</color>
 </resources>

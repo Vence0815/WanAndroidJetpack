@@ -1,15 +1,9 @@
-package com.renrun.basedevelopjetpack.viewmodel
+package com.renrun.basedevelopjetpack.ui.home.repository
 
-import android.annotation.SuppressLint
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.renrun.basedevelopjetpack.data.HomePageInfo
 import com.renrun.basedevelopjetpack.ext.dispatchDefault
 import com.renrun.basedevelopjetpack.http.ApiClient
-import com.renrun.basedevelopjetpack.utils.RxUtil
 import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
-import java.util.*
 
 /**
  * Created by vence on 2018/12/25 16:47
@@ -25,7 +19,8 @@ class FirstFragmentRepository {
 
         fun getInstance() =
             instance ?: synchronized(this) {
-                instance ?: FirstFragmentRepository().also { instance = it }
+                instance
+                    ?: FirstFragmentRepository().also { instance = it }
             }
     }
 
