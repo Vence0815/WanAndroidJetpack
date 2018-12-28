@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="homeData"
+                type="com.renrun.basedevelopjetpack.data.HomePageInfo.RecordsEntity"/>
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+        <ImageView
+                imageFromUrl="@{homeData.goodsImage}"
+                android:id="@+id/img_phone"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:scaleType="centerCrop"
+                android:src="@color/colorAccent"/>
+
+        <TextView
+                android:id="@+id/tv_phone_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/text_label_black"
+                android:textSize="10sp"
+                android:text="@{homeData.goodsName}"
+                tools:text="IPHONE X "/>
+
+        <TextView
+                android:id="@+id/tv_guide_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/text_label_gray10"
+                android:textSize="11sp"
+                android:text="@{`指导价`+homeData.goodsPrice}"
+                tools:text="指导价：8765"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="10dp"
+                android:background="@color/line_color"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+            <TextView
+                    android:text="@{`首付`+homeData.firstAccount}"
+                    android:id="@+id/tv_first_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text_label_red"
+                    android:textSize="11sp"
+                    tools:text="首付：2121"/>
+
+            <TextView
+                    android:text="@{homeData.eachPeriodAccount+`元`}"
+                    android:id="@+id/tv_lease_period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:textColor="@color/text_label_red"
+                    android:textSize="11sp"
+                    tools:text="671/每期*6"/>
+
+            <TextView
+                    android:text="@{`周期`+homeData.leasePeriod}"
+                    android:id="@+id/tv_buy_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:textColor="@color/text_label_red"
+                    android:textSize="11sp"
+                    tools:text="买断价：2190"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>
+

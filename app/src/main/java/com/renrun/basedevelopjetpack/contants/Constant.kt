@@ -1,0 +1,20 @@
+package com.renrun.basedevelopjetpack.contants
+
+import com.renrun.basedevelopjetpack.app.MyApplication
+import java.io.File
+
+/**
+ * Created by vence on 2018/12/25 16:16
+ * 邮箱 ：vence0815@foxmail.com
+ *一些常用的字符串
+ */
+const val NAMESPACE = "http://zuyiji.cn/api/"
+
+const val PREURL = "http://zuyiji.cn/"
+
+val PATH_DATA = MyApplication.getInstance().getCacheDir().getAbsolutePath() + File.separator + "reFreshData"
+
+val PATH_CACHE = PATH_DATA + "/NetCache"
+
+//图片前缀
+var imgaUrlPre = NAMESPACE + "file/image/"
