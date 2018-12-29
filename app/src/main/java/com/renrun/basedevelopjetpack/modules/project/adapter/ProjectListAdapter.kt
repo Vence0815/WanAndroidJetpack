@@ -1,4 +1,4 @@
-package com.renrun.basedevelopjetpack.modules.home.adapter
+package com.renrun.basedevelopjetpack.modules.project.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +14,8 @@ import com.renrun.basedevelopjetpack.data.Article
  * Created by vence on 2018/12/26 15:49
  * 邮箱 ：vence0815@foxmail.com
  */
-class HomeListsAdapter(data: List<Article>) :
-    BaseQuickAdapter<Article, HomeListsAdapter.HomeViewHolder>(R.layout.item_home_lists, data) {
+class ProjectListAdapter(data: List<Article>) :
+    BaseQuickAdapter<Article, ProjectListAdapter.HomeViewHolder>(R.layout.item_project_lists, data) {
 
     override fun convert(helper: HomeViewHolder?, item: Article?) {
         val binding = helper?.binding

@@ -17,3 +17,6 @@ val PATH_CACHE = PATH_DATA + "/NetCache"
 
 //图片前缀
 var imgaUrlPre = NAMESPACE + "file/image/"
+
+
+const val CONTENT_CID_KEY = "cid"

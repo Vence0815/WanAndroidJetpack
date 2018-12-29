@@ -22,6 +22,12 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/home"
             />
+
+    <item
+            android:id="@+id/action_project"
+            android:icon="@drawable/ic_project_black_24dp"
+            android:title="@string/project"
+            />
     <item
             android:id="@+id/action_knowledge_system"
             android:icon="@drawable/ic_apps_black_24dp"
@@ -37,11 +43,7 @@
             android:icon="@drawable/ic_navigation_black_24dp"
             android:title="@string/navigation"
             />
-    <item
-            android:id="@+id/action_project"
-            android:icon="@drawable/ic_project_black_24dp"
-            android:title="@string/project"
-           />
+
 
 
 </menu>

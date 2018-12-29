@@ -16,6 +16,7 @@ import com.renrun.basedevelopjetpack.ext.logSimpleI
 import com.renrun.basedevelopjetpack.fragment.SecondFragment
 import com.renrun.basedevelopjetpack.fragment.ThirdFragment
 import com.renrun.basedevelopjetpack.modules.home.Fragment.HomeFragment
+import com.renrun.basedevelopjetpack.modules.project.Fragment.ProjectFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
@@ -34,7 +35,7 @@ class MainFragment : Fragment() {
         )
         fragments = listOf(
             HomeFragment(),
-            SecondFragment(),
+            ProjectFragment(),
             SecondFragment(),
             ThirdFragment(),
             ThirdFragment()
@@ -65,10 +66,11 @@ class MainFragment : Fragment() {
         binding.bottomnavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_home -> mainViewPage.setCurrentItem(0, false)
-                R.id.action_knowledge_system -> mainViewPage.setCurrentItem(1, false)
-                R.id.action_wechat -> mainViewPage.setCurrentItem(2, false)
-                R.id.action_navigation -> mainViewPage.setCurrentItem(3, false)
-                R.id.action_project -> mainViewPage.setCurrentItem(4, false)
+                R.id.action_project -> mainViewPage.setCurrentItem(1, false)
+                R.id.action_knowledge_system -> mainViewPage.setCurrentItem(2, false)
+                R.id.action_wechat -> mainViewPage.setCurrentItem(3, false)
+                R.id.action_navigation -> mainViewPage.setCurrentItem(4, false)
+
             }
             false
         }

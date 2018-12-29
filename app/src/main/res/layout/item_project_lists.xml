@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="articleData"
+                type="com.renrun.basedevelopjetpack.data.Article"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_margin="4dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="1dp"
+            app:cardElevation="1dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10">
+
+            <ImageView
+                    imageFromUrl="@{articleData.envelopePic}"
+                    android:id="@+id/item_project_list_iv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:contentDescription="@null"
+                    />
+
+            <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_weight="5">
+
+                <TextView
+                        android:id="@+id/item_project_list_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{articleData.title}"
+                        tools:text="@string/app_name"
+                        android:textColor="@color/text_label_black"
+                        android:textSize="16sp"/>
+
+                <TextView
+                        android:text="@{articleData.desc}"
+                        android:id="@+id/item_project_list_content_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/item_project_list_title_tv"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:ellipsize="end"
+                        android:maxLines="4"
+                        tools:text="d扥就卡斯丹路扥就阿里量撒酒疯栏三大类反发金矿森兰老将阿飞老龙阿江了老家色带架发蓝色的阿兰三扥就龙带啊积分赛打饭扫接口看肯单看看就看"
+                        android:textColor="@color/text_label_gray10"
+                        android:textSize="16sp"/>
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/item_project_list_content_tv">
+
+                    <TextView
+                            android:text="@{articleData.author}"
+                            android:id="@+id/item_project_list_author_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@+id/item_project_list_time_tv"
+                            tools:text="@string/app_name"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="14sp"/>
+
+                    <TextView
+                            android:text="@{articleData.niceDate}"
+                            android:layout_alignParentBottom="true"
+                            android:id="@+id/item_project_list_time_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginBottom="8dp"
+                            tools:text="@string/app_name"
+                            android:textColor="@color/text_label_gray10"
+                            android:textSize="14sp"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
+

@@ -1,5 +1,6 @@
-package com.renrun.basedevelopjetpack.modules.home.Fragment
+package com.renrun.basedevelopjetpack.modules.project.Fragment
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.classic.common.MultipleStatusView
@@ -8,72 +9,64 @@ import com.renrun.basedevelopjetpack.R
 import com.renrun.basedevelopjetpack.base.BaseFragment
 import com.renrun.basedevelopjetpack.common.FreshStatus
 import com.renrun.basedevelopjetpack.common.LoadingState
+import com.renrun.basedevelopjetpack.contants.CONTENT_CID_KEY
 import com.renrun.basedevelopjetpack.data.Article
 import com.renrun.basedevelopjetpack.data.Banner
-import com.renrun.basedevelopjetpack.databinding.FragmentHomeBinding
-import com.renrun.basedevelopjetpack.ext.*
+import com.renrun.basedevelopjetpack.databinding.FragmentProjectListBinding
+import com.renrun.basedevelopjetpack.ext.finishFresh
+import com.renrun.basedevelopjetpack.ext.logD
+import com.renrun.basedevelopjetpack.ext.logE
+import com.renrun.basedevelopjetpack.ext.toastErrorWithicon
 import com.renrun.basedevelopjetpack.modules.home.adapter.HomeListsAdapter
 import com.renrun.basedevelopjetpack.modules.home.viewmodel.HomeFragmentViewModel
-import com.renrun.basedevelopjetpack.utils.GlideImageLoader
+import com.renrun.basedevelopjetpack.modules.project.adapter.ProjectListAdapter
+import com.renrun.basedevelopjetpack.modules.project.adapter.ProjectPagerAdapter
+import com.renrun.basedevelopjetpack.modules.project.viewmodel.ProjectFragmentViewModel
 import com.renrun.basedevelopjetpack.utils.InjectUtils
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.youth.banner.BannerConfig
-import com.youth.banner.Transformer
+
 
 /**
- * Created by vence on 2018/12/28 14:02
- * 邮箱 ：vence0815@foxmail.com
+ * Created by chenxz on 2018/5/20.
  */
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class ProjectListFragment : BaseFragment<FragmentProjectListBinding>() {
 
     private var listData: List<Article> = mutableListOf()
-    lateinit var adapter: HomeListsAdapter
+    lateinit var adapter: ProjectListAdapter
 
-    private var bannerUrl: MutableList<String> = mutableListOf()
-    private var bannerTitile: MutableList<String> = mutableListOf()
-
-    /**
-     * banner view
-     */
-    private var bannerView: com.youth.banner.Banner? = null
-
-    override val layoutId: Int = R.layout.fragment_home
-
-    override fun initView() {
-        binding.apply {
-            val factory = InjectUtils.provideHomeFragmentViewModelFactory()
-            val homeViewModel = ViewModelProviders.of(this@HomeFragment, factory)
-                .get(HomeFragmentViewModel::class.java)
-            //viewmodel中数据绑定
-            setVariable(BR.viewModel, homeViewModel)
-            //进来第一次初始化数据,可以先请求数据，不用担心获取数据后控件没有初始化问题，LiveData会处理
-            homeViewModel.refreshData()
-            //RecycleView 的adapter相关
-            adapter = HomeListsAdapter(listData)
-            recycleView.adapter = adapter
-            adapter.bindToRecyclerView(recycleView)
-            subscribeUi(homeViewModel, refreshView, statusView)
-            addBanner(adapter)
+    companion object {
+        fun getInstance(cid: Int): ProjectListFragment {
+            val fragment = ProjectListFragment()
+            val args = Bundle()
+            args.putInt(CONTENT_CID_KEY, cid)
+            fragment.arguments = args
+            return fragment
         }
     }
 
-    /**
-     * 增加banner
-     */
-    private fun addBanner(adapter: HomeListsAdapter) {
-        val header = layoutInflater.inflate(R.layout.item_home_banner, null)
-        bannerView = header.findViewById(R.id.banner)
-        bannerView?.setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE)
-        //设置图片加载器
-        bannerView?.setImageLoader(GlideImageLoader())
-        //设置banner动画效果
-        bannerView?.setBannerAnimation(Transformer.DepthPage)
-        adapter.removeAllHeaderView()
-        adapter.addHeaderView(header)
+    override val layoutId: Int = R.layout.fragment_project_list
+
+    override fun initView() {
+        binding.apply {
+            val factory = InjectUtils.provideProjectFragmentViewModelFactory(arguments!!.getInt(CONTENT_CID_KEY))
+            val projectViewModel =
+                ViewModelProviders.of(this@ProjectListFragment, factory).get(ProjectFragmentViewModel::class.java)
+            //viewmodel中数据绑定
+            setVariable(BR.viewModel, projectViewModel)
+            //RecycleView 的adapter相关
+            adapter = ProjectListAdapter(listData)
+            recycleView.adapter = adapter
+            adapter.bindToRecyclerView(recycleView)
+            subscribeUi(projectViewModel, refreshView, statusView)
+            projectViewModel.refreshData()
+        }
     }
 
-
-    fun subscribeUi(viewModel: HomeFragmentViewModel, refreshView: SmartRefreshLayout, statusView: MultipleStatusView) {
+    fun subscribeUi(
+        viewModel: ProjectFragmentViewModel,
+        refreshView: SmartRefreshLayout,
+        statusView: MultipleStatusView
+    ) {
         //todo  分开感觉实现起来并不优雅，还有封装的空间
         //LiveData监听数据变化
         viewModel.reFreshData.observe(viewLifecycleOwner, Observer {
@@ -118,17 +111,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         })
 
-        viewModel.bannerData.observe(viewLifecycleOwner, Observer {
-            //处理一下banner数据
-            bannerUrl.clear()
-            bannerTitile.clear()
-            for (banner: Banner in it) {
-                bannerUrl.add(banner.imagePath)
-                bannerTitile.add(banner.title)
-            }
-            bannerView?.update(bannerUrl, bannerTitile)
-
-        })
     }
-
 }
