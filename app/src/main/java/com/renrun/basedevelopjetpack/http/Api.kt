@@ -2,7 +2,6 @@ package com.renrun.basedevelopjetpack.http
 
 import com.renrun.basedevelopjetpack.data.ArticleResponseBody
 import com.renrun.basedevelopjetpack.data.Banner
-import com.renrun.basedevelopjetpack.data.HomePageInfo
 import com.renrun.basedevelopjetpack.data.HttpResult
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -16,15 +15,6 @@ import retrofit2.http.QueryMap
  * 网络请求统一管理
  */
 interface Api {
-    /**
-     * 首页列表接口
-     */
-    @GET("appns/goodsCommon/list")
-    fun homeList(
-        @Header("Authorization") sessiond: String,
-        @QueryMap map: Map<String, String>
-    ): Observable<HomePageInfo>
-
 
     /**
      * 获取轮播图

@@ -7,7 +7,7 @@ buildscript {
         // Sdk and tools
         compileSdkVersion = 28
         minSdkVersion = 19
-        targetSdkVersion = 28
+        targetSdkVersion = 27
 
         // App dependencies
         constraintLayoutVersion = '2.0.0-alpha2'
@@ -25,11 +25,9 @@ buildscript {
         materialVersion = '1.0.0'
         navigationVersion = '1.0.0-alpha09'
         recyclerViewVersion = '1.0.0'
-        roomVersion = '2.1.0-alpha02'
         runnerVersion = '1.0.1'
         supportLibraryVersion = '1.0.2'
-        uiAutomatorVersion = '2.2.0-alpha4'
-        workVersion = '1.0.0-alpha11'
+
 
         //net
         gsonVersion = '2.8.2'

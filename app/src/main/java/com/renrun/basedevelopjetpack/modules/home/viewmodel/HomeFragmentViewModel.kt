@@ -1,15 +1,13 @@
 package com.renrun.basedevelopjetpack.modules.home.viewmodel
 
-import android.text.TextUtils.isEmpty
 import androidx.lifecycle.MutableLiveData
 import com.renrun.basedevelopjetpack.base.BaseViewModel
 import com.renrun.basedevelopjetpack.common.CommonLoadingState
 import com.renrun.basedevelopjetpack.common.FreshStatus
 import com.renrun.basedevelopjetpack.common.LoadingState
 import com.renrun.basedevelopjetpack.data.Article
-import com.renrun.basedevelopjetpack.data.ArticleResponseBody
-import com.renrun.basedevelopjetpack.data.HomePageInfo
-import com.renrun.basedevelopjetpack.modules.home.repository.FirstFragmentRepository
+import com.renrun.basedevelopjetpack.data.Banner
+import com.renrun.basedevelopjetpack.modules.home.adapter.HomeListsAdapter
 import com.renrun.basedevelopjetpack.modules.home.repository.HomeFragmentRepository
 import io.reactivex.rxkotlin.subscribeBy
 
@@ -30,6 +28,7 @@ class HomeFragmentViewModel internal constructor(
 
     var loadMoreData = MutableLiveData<List<Article>>()
 
+    var bannerData = MutableLiveData<List<Banner>>()
 
     /**
      * 下拉刷新
@@ -37,6 +36,7 @@ class HomeFragmentViewModel internal constructor(
     fun refreshData() {
         page = 1
         loadingLayout.value = CommonLoadingState(LoadingState.LOADING, FreshStatus.REFRESH, "")
+        getBanner()
         repository.getArticleList(page)
             .subscribeBy(
                 onNext = {
@@ -69,7 +69,7 @@ class HomeFragmentViewModel internal constructor(
             .subscribeBy(
                 onNext = {
                     loadingLayout.value = CommonLoadingState(LoadingState.SUCCESS, FreshStatus.LOADMORE, "")
-                    if (it.errorCode==0) {
+                    if (it.errorCode == 0) {
                         if (it.data.datas.isEmpty()) {
                             loadingLayout.value = CommonLoadingState(LoadingState.EMPTY, FreshStatus.LOADMORE, "")
                         } else {
@@ -82,6 +82,27 @@ class HomeFragmentViewModel internal constructor(
                 onError = {
                     loadingLayout.value =
                             CommonLoadingState(LoadingState.NETERROR, FreshStatus.LOADMORE, it.message.toString())
+                }
+            )
+            .addDispose()
+    }
+
+    /**
+     * 获取banner
+     */
+    fun getBanner() {
+        repository.getBanner()
+            .subscribeBy(
+                onNext = {
+                    if (it.errorCode == 0) {
+                        bannerData.value = it.data
+                    } else {
+                        loadingLayout.value = CommonLoadingState(LoadingState.ERROR, FreshStatus.BLANK, it.errorMsg)
+                    }
+                },
+                onError = {
+                    loadingLayout.value =
+                            CommonLoadingState(LoadingState.NETERROR, FreshStatus.BLANK, it.message.toString())
                 }
             )
             .addDispose()

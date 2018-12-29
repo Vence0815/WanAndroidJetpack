@@ -9,7 +9,7 @@ enum class LoadingState {
 }
 
 enum class FreshStatus {
-    REFRESH, LOADMORE
+    REFRESH, LOADMORE, BLANK
 }
 
 class CommonLoadingState(val loadingState: LoadingState, val freshStatus: FreshStatus, val errorMsg: String) {

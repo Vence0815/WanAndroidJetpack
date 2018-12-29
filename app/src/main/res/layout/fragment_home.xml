@@ -11,6 +11,7 @@
     </data>
 
     <com.classic.common.MultipleStatusView
+            android:id="@+id/statusView"
             android:layout_width="match_parent"
             app:emptyView="@layout/layout_empty_view"
             app:errorView="@layout/layout_error_view"

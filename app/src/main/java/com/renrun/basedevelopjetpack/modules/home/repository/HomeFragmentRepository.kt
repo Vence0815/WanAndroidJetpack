@@ -1,7 +1,7 @@
 package com.renrun.basedevelopjetpack.modules.home.repository
 
 import com.renrun.basedevelopjetpack.data.ArticleResponseBody
-import com.renrun.basedevelopjetpack.data.HomePageInfo
+import com.renrun.basedevelopjetpack.data.Banner
 import com.renrun.basedevelopjetpack.data.HttpResult
 import com.renrun.basedevelopjetpack.ext.dispatchDefault
 import com.renrun.basedevelopjetpack.http.ApiClient
@@ -31,6 +31,14 @@ class HomeFragmentRepository {
      */
     fun getArticleList(page: Int): Observable<HttpResult<ArticleResponseBody>> {
         return ApiClient.instance.api.getArticles(page)
+            .dispatchDefault()
+    }
+
+    /**
+     *获取首页banner
+     */
+    fun getBanner(): Observable<HttpResult<List<Banner>>> {
+        return ApiClient.instance.api.getBanners()
             .dispatchDefault()
     }
 

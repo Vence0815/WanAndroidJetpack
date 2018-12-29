@@ -1,8 +1,6 @@
 package com.renrun.basedevelopjetpack.utils
 
-import com.renrun.basedevelopjetpack.modules.home.repository.FirstFragmentRepository
 import com.renrun.basedevelopjetpack.modules.home.repository.HomeFragmentRepository
-import com.renrun.basedevelopjetpack.modules.home.viewmodel.FirstFragmentViewModeFactory
 import com.renrun.basedevelopjetpack.modules.home.viewmodel.HomeFragmentViewModeFactory
 
 /**
@@ -12,13 +10,6 @@ import com.renrun.basedevelopjetpack.modules.home.viewmodel.HomeFragmentViewMode
  * 创建repository相关对象了
  */
 object InjectUtils {
-
-    /**
-     * 提供工厂类，传入需要的Repository对象
-     */
-    fun provideFirstFragmentViewModelFactory(): FirstFragmentViewModeFactory =
-        FirstFragmentViewModeFactory(FirstFragmentRepository.getInstance())
-
 
     /**
      * 首页ViewModel

@@ -13,7 +13,6 @@ import androidx.viewpager.widget.ViewPager
 import com.renrun.basedevelopjetpack.R
 import com.renrun.basedevelopjetpack.databinding.FragmentMainBinding
 import com.renrun.basedevelopjetpack.ext.logSimpleI
-import com.renrun.basedevelopjetpack.modules.home.Fragment.FirstFragment
 import com.renrun.basedevelopjetpack.fragment.SecondFragment
 import com.renrun.basedevelopjetpack.fragment.ThirdFragment
 import com.renrun.basedevelopjetpack.modules.home.Fragment.HomeFragment
@@ -35,7 +34,7 @@ class MainFragment : Fragment() {
         )
         fragments = listOf(
             HomeFragment(),
-            FirstFragment(),
+            SecondFragment(),
             SecondFragment(),
             ThirdFragment(),
             ThirdFragment()
