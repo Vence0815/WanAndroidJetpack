@@ -18,6 +18,9 @@ import com.renrun.basedevelopjetpack.fragment.ThirdFragment
 import com.renrun.basedevelopjetpack.modules.home.Fragment.HomeFragment
 import com.renrun.basedevelopjetpack.modules.project.Fragment.ProjectFragment
 import kotlinx.android.synthetic.main.fragment_main.*
+import androidx.navigation.Navigation
+
+
 
 
 /**
@@ -46,6 +49,7 @@ class MainFragment : Fragment() {
         initPage(binding)
         return binding.root
     }
+
 
     private fun initPage(binding: FragmentMainBinding) {
         binding.mainViewPage.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

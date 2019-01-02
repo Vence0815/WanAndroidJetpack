@@ -2,6 +2,7 @@ package com.renrun.basedevelopjetpack.modules
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.renrun.basedevelopjetpack.R
 import com.renrun.basedevelopjetpack.ext.logI
@@ -15,10 +16,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         logI("MainActivity---------onCreate")
+
     }
 
     override fun onSupportNavigateUp(): Boolean =
         findNavController(R.id.navHostFragment).navigateUp()
+
+
 
     override fun onResume() {
         super.onResume()

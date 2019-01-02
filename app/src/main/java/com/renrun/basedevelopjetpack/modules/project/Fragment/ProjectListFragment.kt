@@ -1,8 +1,10 @@
 package com.renrun.basedevelopjetpack.modules.project.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.classic.common.MultipleStatusView
 import com.renrun.basedevelopjetpack.BR
 import com.renrun.basedevelopjetpack.R
@@ -17,6 +19,7 @@ import com.renrun.basedevelopjetpack.ext.finishFresh
 import com.renrun.basedevelopjetpack.ext.logD
 import com.renrun.basedevelopjetpack.ext.logE
 import com.renrun.basedevelopjetpack.ext.toastErrorWithicon
+import com.renrun.basedevelopjetpack.modules.common.ArticleDetailActivity
 import com.renrun.basedevelopjetpack.modules.home.adapter.HomeListsAdapter
 import com.renrun.basedevelopjetpack.modules.home.viewmodel.HomeFragmentViewModel
 import com.renrun.basedevelopjetpack.modules.project.adapter.ProjectListAdapter
@@ -53,12 +56,24 @@ class ProjectListFragment : BaseFragment<FragmentProjectListBinding>() {
                 ViewModelProviders.of(this@ProjectListFragment, factory).get(ProjectFragmentViewModel::class.java)
             //viewmodel中数据绑定
             setVariable(BR.viewModel, projectViewModel)
+            projectViewModel.refreshData()
             //RecycleView 的adapter相关
             adapter = ProjectListAdapter(listData)
             recycleView.adapter = adapter
             adapter.bindToRecyclerView(recycleView)
             subscribeUi(projectViewModel, refreshView, statusView)
-            projectViewModel.refreshData()
+            addLinsterner()
+        }
+    }
+
+
+    fun addLinsterner() {
+        adapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener { it, view, position ->
+            val intent = Intent(activity, ArticleDetailActivity::class.java)
+            intent.putExtra("link", listData.get(position).link)
+            intent.putExtra("title", listData.get(position).title)
+            startActivity(intent)
+            logE("点击了---->" + position)
         }
     }
 

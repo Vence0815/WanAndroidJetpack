@@ -1,7 +1,9 @@
 package com.renrun.basedevelopjetpack.modules.home.Fragment
 
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.classic.common.MultipleStatusView
 import com.renrun.basedevelopjetpack.BR
 import com.renrun.basedevelopjetpack.R
@@ -19,6 +21,8 @@ import com.renrun.basedevelopjetpack.utils.InjectUtils
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
+import com.renrun.basedevelopjetpack.modules.common.ArticleDetailActivity
+
 
 /**
  * Created by vence on 2018/12/28 14:02
@@ -52,8 +56,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             adapter = HomeListsAdapter(listData)
             recycleView.adapter = adapter
             adapter.bindToRecyclerView(recycleView)
-            subscribeUi(homeViewModel, refreshView, statusView)
+            addLinsterner()
             addBanner(adapter)
+            subscribeUi(homeViewModel, refreshView, statusView)
+        }
+    }
+
+
+    fun addLinsterner() {
+        adapter.onItemClickListener = BaseQuickAdapter.OnItemClickListener { it, view, position ->
+            //使用Navigation跳转 坑有点多，不太适合项目
+//            val bundle = Bundle()
+//            bundle.putString("link", listData.get(position).link)
+//            bundle.putString("title", listData.get(position).title)
+//            Navigation.findNavController(view).navigate(R.id.articleDetailFragment, bundle)
+
+            val intent = Intent(activity, ArticleDetailActivity::class.java)
+            intent.putExtra("link", listData.get(position).link)
+            intent.putExtra("title", listData.get(position).title)
+            startActivity(intent)
+            logE("点击了---->" + position)
         }
     }
 
@@ -127,7 +149,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 bannerTitile.add(banner.title)
             }
             bannerView?.update(bannerUrl, bannerTitile)
-
         })
     }
 
